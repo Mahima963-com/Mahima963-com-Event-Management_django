@@ -1,0 +1,25 @@
+<!-- event_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.title }} - Event Details</title>
+</head>
+<body>
+    <h1>{{ event.title }}</h1>
+    <p><strong>Date:</strong> {{ event.date }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+    <p><strong>Description:</strong> {{ event.description }}</p>
+    <p><strong>Capacity:</strong> {{ event.capacity }}</p>
+    <p><strong>Ticket Price:</strong> ${{ event.ticket_price }}</p>
+
+    <!-- Additional details -->
+    <p><strong>Tickets Sold:</strong> {{ tickets_sold }}</p>
+    <p><strong>Remaining Tickets:</strong> {{ remaining_tickets }}</p>
+    <p><strong>Total Revenue:</strong> ${{ total_revenue }}</p>
+    <p><strong>Number of Attendees:</strong> {{ attendees_count }}</p>
+
+    <a href="{% url 'event_list' %}">Back to Event List</a>
+</body>
+</html>

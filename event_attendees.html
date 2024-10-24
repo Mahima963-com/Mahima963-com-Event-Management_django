@@ -1,0 +1,35 @@
+<!-- event_attendees.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Events and Attendees</title>
+</head>
+<body>
+    <h1>All Events and Attendees</h1>
+
+    {% for event in events %}
+        <h2>{{ event.title }}</h2>
+        <p><strong>Date:</strong> {{ event.date }}</p>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+
+        <h3>Attendees:</h3>
+        <ul>
+            {% for attendee in event.attendees.all %}
+                <li>
+                    {{ attendee.name }} - {{ attendee.email }} - {{ attendee.phone }}
+                    <!-- Update button -->
+                    <a href="{% url 'update_attendee' attendee.id %}">
+                        <button>Update</button>
+                    </a>
+                </li>
+            {% empty %}
+                <p>No attendees registered for this event yet.</p>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    
+    <a href="{% url 'event_list' %}">Back to Event List</a>
+</body>
+</html>
